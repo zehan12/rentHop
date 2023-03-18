@@ -1,0 +1,42 @@
+.date-block{
+    background-color: red;
+    position: inherit;
+    z-index: 999;
+}
+.date-block2{
+    background-color: red;
+    position: inherit;
+    z-index: 99;
+}
+.sticky_item {
+     position: fixed;
+      top: 0;
+      width: 100%;
+       z-index: 999;
+    }
+
+.popup{
+    position:fixed;
+    top: 00;
+    left: 0;
+    padding: 30px 10px;
+    
+    width: 100%;
+    height: 100vh;
+    display: block;
+    background: #fff;
+    z-index: 9999;
+}
+.popup-inner{
+    position: relative;
+    width: 100%;
+    z-index: 99999;
+}
+
+.popup-inner .close-btn{
+    position: absolute;
+    top: -28px;
+    right: -4px;
+   
+    
+}
