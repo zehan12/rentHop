@@ -74,7 +74,7 @@ function Search(props) {
                   className="form-control input-lg br-md-0 border-end-0 "
                 />
                 <span
-                  class="glyphicon glyphicon-calendar relative" style={{ right: "-260px", top: "-31px" }}></span>
+                  class="glyphicon glyphicon-calendar relative" style={{ right: "-260px", top: "0px" }}></span>
               </div>
               <div className="form-group col-xl-3 col-lg-3 col-md-12 select2-lg  mb-0 bg-transparent date-block2">
                 <DatePicker

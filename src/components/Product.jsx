@@ -16,12 +16,12 @@ function Product() {
                 <div className=" container">
                     <>
                         <Search
-                            // setCityId={setCityId}
+                            setCityId={setCityId}
                         />
                     </>
                     <>
                         <div className="row">
-                            {/* <Sidebar_Loc cityId={cityId} /> */}
+                            <Sidebar_Loc cityId={cityId} />
                             <Card />
                         </div>
                     </>

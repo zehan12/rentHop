@@ -10,8 +10,8 @@ import Search from "./Search";
 function App() {
     return <>
         <Header />
-        {/* <Product /> */}
-        <Login />
+        <Product />
+        {/* <Login /> */}
         <Footer />
     </>
     

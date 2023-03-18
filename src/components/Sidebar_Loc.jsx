@@ -8,7 +8,7 @@ function Sidebar_Loc({ cityId }) {
 
   const [locations, setLocations] = useState(null);
 
-  const getLocation = async () => {
+  const getLocation = async (cityId) => {
     const res = await fetch("http://139.59.81.203/api/get-locations",
       {
         method: "POST",
@@ -16,7 +16,7 @@ function Sidebar_Loc({ cityId }) {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ city_id: "6104" })
+        body: JSON.stringify({ city_id: cityId })
       }
     );
     const data = await res.json()
@@ -26,8 +26,9 @@ function Sidebar_Loc({ cityId }) {
 
 
   useEffect(() => {
-    getLocation();
-  }, [])
+    console.log("call")
+    getLocation(cityId);
+  }, [cityId])
 
 
   return (
