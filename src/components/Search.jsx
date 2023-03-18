@@ -12,9 +12,7 @@ function Search(props) {
   // city selectd from options
   const [citySelected, setCitySelected] = useState("");
 
-  useEffect(() => {
-    getCities()
-  }, [])
+  const [bikeData, setBikeData]  = useState(null);
 
   const getCities = async () => {
     const res = await fetch("http://139.59.81.203/api/get-cities",
@@ -30,9 +28,36 @@ function Search(props) {
     setCities(data.city);
   }
 
-  console.log(cities, "data");
+  const handleSearch = async () => {
+    // e.preventDefault();
+    const res = await fetch("http://139.59.81.203/api/get-bikes", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        city_id: 6104,
+        from_time: '11:35 AM',//start
+        to_time: '05:00 PM', //end
+        from_date: "03/16/2023",
+        to_date: "03/17/2023"
+      })
+    })
+    const data = await res.json();
+    setBikeData(data.prices);
+    console.log(bikeData,"bikes");
+    props.setBikes(data.prices);
+  }
 
-  console.log("City selected by user:", citySelected)
+  // handleSearch()
+
+
+  useEffect(() => {
+    handleSearch()
+    getCities()
+  }, [])
+
 
   return (
     <>
@@ -44,10 +69,10 @@ function Search(props) {
                 <select
                   value={citySelected}
                   onChange={(e) => {
-                    console.log(e.target.value,"dlksajlkfkfdsajdallflfalflkjdfljkjlalfkls")
+                    console.log(e.target.value, "dlksajlkfkfdsajdallflfalflkjdfljkjlalfkls")
                     setCitySelected(e.target.value);
                     props.setCityId(e.target.value);
-                    
+
 
                   }}
                   className="form-control input-lg br-te-md-0 br-be-md-0"
@@ -73,8 +98,7 @@ function Search(props) {
                   onChange={(date) => setStartDate(date)}
                   className="form-control input-lg br-md-0 border-end-0 "
                 />
-                <span
-                  class="glyphicon glyphicon-calendar relative" style={{ right: "-260px", top: "0px" }}></span>
+
               </div>
               <div className="form-group col-xl-3 col-lg-3 col-md-12 select2-lg  mb-0 bg-transparent date-block2">
                 <DatePicker
@@ -89,8 +113,7 @@ function Search(props) {
                   onChange={(date) => setEndDate(date)}
                   className="form-control input-lg br-md-0 border-end-0 "
                 />
-                <span
-                  class="glyphicon glyphicon-calendar relative" style={{ right: "-260px", top: "-31px" }}></span>
+
               </div>
               <div className="col-xl-3 col-lg-3 col-md-12 mb-0">
                 <a

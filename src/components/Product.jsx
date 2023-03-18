@@ -7,6 +7,8 @@ function Product() {
 
     const [cityId, setCityId] = useState("");
 
+    const [bikes, setBikes] = useState("")
+
     console.log("city update on update in product:", cityId)
 
 
@@ -16,13 +18,15 @@ function Product() {
                 <div className=" container">
                     <>
                         <Search
+                            cityId={cityId}
                             setCityId={setCityId}
+                            setBikes={setBikes}
                         />
                     </>
                     <>
                         <div className="row">
                             <Sidebar_Loc cityId={cityId} />
-                            <Card />
+                            <Card bikes={bikes} />
                         </div>
                     </>
 
